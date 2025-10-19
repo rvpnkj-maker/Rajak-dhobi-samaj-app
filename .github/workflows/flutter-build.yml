@@ -24,7 +24,8 @@ jobs:
         with:
           flutter-version: '3.24.3'
           channel: 'stable'
-
+- name: Create Flutter project structure (if missing)
+        run: flutter create .
       - name: Flutter Doctor
         run: flutter doctor -v
 
