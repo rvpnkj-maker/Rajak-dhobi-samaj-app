@@ -2,7 +2,10 @@ name: rajak_dhobi_samaj_app
 description: Rajak Dhobi Samaj Yuva Ekta Manch App
 publish_to: 'none'
 version: 1.0.0+1
-
+- name: Recreate Flutter project structure
+        run: |
+          rm -rf android ios
+          flutter create .
 environment:
   sdk: ">=3.5.0 <4.0.0"
 
@@ -15,3 +18,7 @@ flutter:
 
   assets:
     - assets/logo.png
+- name: Recreate Flutter project structure
+        run: |
+          rm -rf android ios
+          flutter create .
