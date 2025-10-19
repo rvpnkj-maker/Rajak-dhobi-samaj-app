@@ -13,22 +13,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
           flutter-version: '3.24.3'
+          channel: 'stable'
 
       - name: Flutter Doctor
         run: flutter doctor -v
 
-      - name: Get dependencies
+      - name: Install dependencies
         run: flutter pub get
 
-      - name: Build APK (release)
+      - name: Build release APK
         run: flutter build apk --release
 
-      - name: Upload APK
+      - name: Upload release APK
         uses: actions/upload-artifact@v4
         with:
           name: Rajak-Dhobi-Samaj-App
