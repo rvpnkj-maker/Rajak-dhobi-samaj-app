@@ -28,11 +28,17 @@ jobs:
       - name: Flutter Doctor
         run: flutter doctor -v
 
-      - name: Install dependencies
+      - name: Accept Android Licenses
+        run: yes | flutter doctor --android-licenses
+
+      - name: Get dependencies
         run: flutter pub get
 
+      - name: Clean build cache
+        run: flutter clean
+
       - name: Build release APK
-        run: flutter build apk --release
+        run: flutter build apk --release --verbose
 
       - name: Upload release APK
         uses: actions/upload-artifact@v4
