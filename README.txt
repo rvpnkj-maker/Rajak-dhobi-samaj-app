@@ -1,0 +1,1 @@
+# Android folder placeholder - run `flutter create .` in this directory to populate platform folders.
