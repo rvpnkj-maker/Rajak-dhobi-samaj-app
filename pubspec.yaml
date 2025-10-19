@@ -15,6 +15,3 @@ flutter:
 
   assets:
     - assets/logo.png
-flutter create .
-flutter pub get
-flutter build apk --release
