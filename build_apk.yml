@@ -4,30 +4,32 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   build:
-    name: Build APK
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Setup Flutter
+      - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'
+          channel: 'stable'
+          flutter-version: '3.24.3'
 
-      - name: Install dependencies
+      - name: Flutter Doctor
+        run: flutter doctor -v
+
+      - name: Get dependencies
         run: flutter pub get
 
-      - name: Build release APK
+      - name: Build APK (release)
         run: flutter build apk --release
 
-      - name: Upload APK Artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: RajakDhobiSamajApp-APK
+          name: Rajak-Dhobi-Samaj-App
           path: build/app/outputs/flutter-apk/app-release.apk
